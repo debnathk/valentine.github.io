@@ -45,7 +45,6 @@
       </div>
     </div>
   </div>
-
   <script type="module">
     import confetti from 'https://cdn.skypack.dev/canvas-confetti';
     const yesButton = document.getElementById('yesButton');
@@ -67,26 +66,35 @@
       "./images/image6.gif",
       "./images/cry.gif"
     ];
+
+    const questionTexts = [
+      "Will you be my Valentine?",
+      "Are you sure?",
+      "Really? 🥺",
+      "Think again! 💔",
+      "Last chance! 😢",
+      "Don't break my heart! 💘",
+      "Okay... I'm heartbroken 💔"
+    ];
   
     noButton.addEventListener('click', function() {
       if (noClickCount < 6) {
         noClickCount++;
         imageDisplay.src = imagePaths[noClickCount];
-        buttonHeight += 35; // Increase height by 5px on each click
+        valentineQuestion.textContent = questionTexts[noClickCount];
+        buttonHeight += 35; // Increase height by 35px on each click
         buttonWidth += 35;
-        fontSize += 25; // Increase font size by 1px on each click
+        fontSize += 25; // Increase font size by 25px on each click
         yesButton.style.height = `${buttonHeight}px`; // Update button height
         yesButton.style.width = `${buttonWidth}px`;
         yesButton.style.fontSize = `${fontSize}px`; // Update font size
-        if (noClickCount < 7) {
-          noButton.textContent = ["No", "Are you sure?", "Pookie please", "Don't do this to me :(", "You're hurting my feelings", "I'm gonna cry...", "You broke my heart :("][noClickCount];
-        }
+        noButton.textContent = "Still, no!";
       }
     });
   
     yesButton.addEventListener('click', () => {
-      imageDisplay.src = './images/bubu-bubu-dudu.gif'; // Change to image7.gif
-      valentineQuestion.textContent = "Yayyyyy!!!"; // Change the question text
+      imageDisplay.src = './images/bubu-bubu-dudu.gif'; // Change to happy image
+      valentineQuestion.textContent = "Yayyyyy!!! 🎉"; // Change the question text
       responseButtons.style.display = 'none'; // Hide both buttons
       confetti(); // Trigger confetti animation
     });
